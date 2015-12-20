@@ -1,4 +1,11 @@
 body {
+  background: url(/images/paper.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -9,18 +16,73 @@ a {
 
 
 
-.navbar-header {
+/*.navbar-header {
     float: left;
     padding: 15px;
     text-align: center;
     width: 100%;
+}*/
+/*.navbar-brand{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+}*/
+
+.brand-centered {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 .navbar-brand {
-  float:none;
-  margin-left: 0px;
-  padding: 0px;
-  height: 75px
+  display: flex;
+  align-items: center;
 }
+
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 100px;
+    height: 100px;
+    padding-top: 10px;
+
+}
+.navbar{
+  min-height: 100px;
+}
+
+.navbar-left{
+  padding-left: 10%;
+  text-align: center;
+}
+
+.navbar-right{
+  padding-right:10%;
+  text-align: center;
+}
+/*.navbar-brand{
+  position: absolute;
+  left: 50%;
+  display: block;
+  width: 300px;
+  text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+
+
+
+
+
+.navbar>.container .navbar-brand,
+.navbar>.container-fluid .navbar-brand {
+    margin-left: -150px;
+}*/
 
 .landing-image{
   height:300px;
