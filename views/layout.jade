@@ -1,7 +1,10 @@
-include plain_nav.html
-#wrap
-  .container
-    block content
-#push
-  block footer
-    include footer.jade
+doctype html
+html
+  include head.jade
+  include plain_nav.html
+  #wrap
+    .container
+      block content
+  #push
+    block footer
+      include footer.jade
