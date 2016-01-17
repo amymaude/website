@@ -1,7 +1,27 @@
+
 extends layout
 block content
-  div
-    form
-      input(id="from" type="tesxt" placeholder="Your email")
-      input(id="subject" type="text" placeholder="Comments")
-      button(id="send") Send
+  h1 Contact Form
+  div.content
+    form(action='/contact', name='contactus', id='contactus', method='post')
+      fieldset
+        p
+          label(for='name') Name:
+          br
+          input(name='name', type='text', value='', id='name')
+        p
+          label(for='email') Email:
+          br
+          input(name='email', type='text', value='', id='email')
+        p
+          label(for='message') Message:
+          br
+          textarea(name='message', cols='40', rows='10', id='message')
+        p
+          input(name='submit', type='submit', value='Send', id='submit' class='submit-contact')
+
+    if(typeof msg !== 'undefined')
+      if(!!err)
+        div(class='msgbox err') #{msg}
+      else
+        div(class='msgbox success') #{msg}

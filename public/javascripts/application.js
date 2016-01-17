@@ -4,13 +4,13 @@ var getEmbedCode = function(images, index){
     dataType: "jsonp",
     url:"https://api.instagram.com/oembed/?url=" + images[index].link,
     success: function(data){
-      var embedCodes = data.html;
+      mostRecent = data.html;
     }
   })
 }
-
-$(document).ready(function(){
-  var images;
+var mostRecent;
+var images;
+$(document).ready(function(done){
   $.ajax({
     type: "GET",
     dataType: "jsonp",
@@ -18,11 +18,12 @@ $(document).ready(function(){
     // jsonpCallback: "jsonpcallback",
     url: "https://api.instagram.com/v1/users/2228535302/media/recent?access_token=" + token + "&count=5&callback=callbackFunction",
     success: function(data) {
-      console.log(data.data[0].link)
-      images = data.data
-      images.forEach(getEmbedCode(images, 0)
+      images = data.data;
+      getEmbedCode(images, 0);
     }
-  });
+  })
+})
 
-
+$(document).ajaxComplete(function(){
+  $('.insta-feed').append(mostRecent);
 })
