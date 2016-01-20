@@ -133,7 +133,6 @@ a {
 }
 
 .about{
-  margin-top: 80px;
   height: 1000px;
   background-color: white;
   top: 50%;
@@ -141,7 +140,19 @@ a {
   text-align: left;
   letter-spacing: 2px;
   line-height: 40px;
+  margin-top: 40px;
 
+}
+.contact-form
+{
+  height: 1000px;
+  background-color: white;
+  top: 50%;
+  padding: 20px;
+  text-align: left;
+  letter-spacing: 2px;
+  line-height: 40px;
+  margin-top: 40px;
 }
 .first-row > .left > span{
   letter-spacing: 2px;
@@ -152,14 +163,17 @@ a {
   padding-right: 20px;
 }
 .announcements{
-  margin: 0px;
-  margin-top: 20px;
+  margin: 50px;
+  line-height: 40px;
   text-align: center;
-  line-height: 200px;
   min-height: 200px;
   background-color: white;
   font-color: black;
   font-size: 20px
+}
+
+.announcements > span{
+  border: 50px;
 }
 
 .announcements >div{
@@ -170,14 +184,26 @@ a {
   transform: translateY(-50%);
 }
 
-.carousel{
-  margin-top: 80px;
-}
-.carousel .item{
+
+.item{
   width: 100%;
   padding: none;
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  background-color:black;
 }
 
+.item img{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+}
 .menu{
   height: 1500px;
   text-align: center;
@@ -208,4 +234,14 @@ iframe {
 
 .container{
   width: 95%;
+}
+
+
+body {
+  padding-top: 80px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
 }

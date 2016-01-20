@@ -1,27 +1,28 @@
 
 extends layout
 block content
-  h1 Contact Form
-  div.content
-    form(action='/contact', name='contactus', id='contactus', method='post')
-      fieldset
-        p
-          label(for='name') Name:
-          br
-          input(name='name', type='text', value='', id='name')
-        p
-          label(for='email') Email:
-          br
-          input(name='email', type='text', value='', id='email')
-        p
-          label(for='message') Message:
-          br
-          textarea(name='message', cols='40', rows='10', id='message')
-        p
-          input(name='submit', type='submit', value='Send', id='submit' class='submit-contact')
-
-    if(typeof msg !== 'undefined')
-      if(!!err)
-        div(class='msgbox err') #{msg}
-      else
-        div(class='msgbox success') #{msg}
+  if(typeof msg !== 'undefined')
+    if(!!err)
+      div(class='alert alert-danger') #{msg}
+    else
+      div(class='alert alert-success') #{msg}
+  div(class="container")
+    div(class="row contact-form")
+      h2 Contact Us!
+      div.content
+        form(class="form-horizontal" action='/contact', name='contactus', id='contactus', method='post')
+          div(class="form-group")
+            label(for='name' class="col-sm-2 control-label") Name:
+            div(class="col-sm-6")
+              input(class="form-control" name='name', type='text', value='', id='name')
+          div(class="form-group")
+            label(for='email' class="col-sm-2 control-label") Email:
+            div(class="col-sm-6")
+              input(class="form-control", name='email', type='email', value='', id='email')
+          div(class="form-group")
+            label(for='message' class="col-sm-2 control-label") Message:
+            div(class="col-sm-10")
+              textarea(class="form-control", name='message', rows='10', id='message')
+          div(class="form-group")
+            div(class="col-sm-offset-2 col-sm-10")
+              button(name='submit', type="submit", class="btn btn-default", value='Send', id='submit') Submit

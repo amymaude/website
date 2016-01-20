@@ -19,6 +19,11 @@ $(document).ready(function(done){
     url: "https://api.instagram.com/v1/users/2228535302/media/recent?access_token=" + token + "&count=5&callback=callbackFunction",
     success: function(data) {
       images = data.data;
+      console.log(images)
+      $(".announcements span").append(images[0].caption.text)
+      var backgroundImage = images[0].images.standard_resolution.url
+
+      $(".item img").first().attr("src", backgroundImage)
       getEmbedCode(images, 0);
     }
   })

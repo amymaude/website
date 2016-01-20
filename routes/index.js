@@ -9,16 +9,19 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Rollin\' Bones', data: token});
 });
 
+router.get('/admin', function(req, res){
+  res.render('signin', {title: 'Admin Sign In'})
+})
+
 router.route('/contact').get(function(req, res, next){
   res.render('contact', {title: 'Contact'});
 })
 
 router.post('/contact', function (req, res) {
-  console.log(req);
-  console.log('hi')
   var mailOpts, smtpTrans;
   smtpTrans = nodemailer.createTransport('SMTP', {
-    service: 'Gmail',
+    service: 'gmail',
+    secure: true,
     auth: {
       user: process.env.EMAIL,
       pass: process.env.EMAIL_PWORD
@@ -26,18 +29,21 @@ router.post('/contact', function (req, res) {
   });
 
   mailOpts = {
-    from: req.body.name + '&lt;' + req.body.email +'&gt;',
+    from: req.body.name +' <'+ req.body.email +'>',
     to: process.env.EMAIL,
     subject: 'Website Contact Form',
     text: req.body.message
-  }
+  };
+
+  console.log(mailOpts);
   smtpTrans.sendMail(mailOpts, function (error, response) {
     if (error) {
-        res.render('contact', { title: 'Raging Flame Laboratory - Contact', msg: 'Error occured, message not sent.', err: true, page: 'contact' })
+      console.log(error)
+      res.render('contact', { msg: 'Error occured, message not sent.', err: true, page: 'contact' })
     }
     //Yay!! Email sent
     else {
-        res.render('contact', { title: 'Raging Flame Laboratory - Contact', msg: 'Message sent! Thank you.', err: false, page: 'contact' })
+        res.render('contact', { msg: 'Message sent! Thank you.', err: false, page: 'contact' })
     }
   });
 });
