@@ -2,8 +2,8 @@
 extends layout
 
 block content
-  include plain.html
-  script.
-    var token = '#{locals.data}'
-    console.log(token)
-  script(src='/javascripts/application.js')
+  body
+    include plain.jade
+    script.
+      var token = '#{locals.data}'
+    script(src='/javascripts/application.js')
