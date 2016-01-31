@@ -6,6 +6,7 @@ body {
   background-size: cover;
 }
 body, html {
+  width: 100%;
   height: 100%;
   font: 24px "western";
 }
@@ -70,18 +71,20 @@ h2{
 .landing-image{
   height:300px;
 }
+
+
 .carousel{
-  margin-right: -15px;
+  margin: auto;
 }
 
 /*instagram-status update and image carousel*/
 .alert-info{
-  margin-top: 20px;
-  margin-right: -15px;
+  width:100%;
+  margin: 20px auto 0px;
+
   border-radius: 0px;
-  padding: 8px;
-  margin-bottom: 0px;
-  font: 14px arial black;
+  padding: 20px;
+  font: 18px arial black;
   color: #f2f2f2;
   border: none;
   background-image: url('/images/marbled_background.png');
@@ -128,6 +131,7 @@ h2{
 
 /*contact-row*/
 .first-row{
+  margin: auto;
   margin-top: 20px;
   min-height: 400px;
   /*background-image: url('/images/packaging_paper_texture.jpg');*/
@@ -207,11 +211,10 @@ label, .btn-default{
 /*about row*/
 .about{
   background-color: white;
-  padding: 20px;
   text-align: center;
   letter-spacing: 1.5px;
-  margin-top: 20px;
   opacity: .95;
+  padding: 20px 60px 20px 60px;
 }
 
 .about-text{
@@ -244,7 +247,7 @@ label, .btn-default{
 }
 
 .faqs-menu{
-  margin-top: 20px;
+  padding-top: 20px;
   background-color: white;
   opacity: .95;
   padding-bottom: 20px;
@@ -264,7 +267,12 @@ label, .btn-default{
 }
 
 .container{
-  width: 95%;
+  width: 100%;
+}
+.row{
+  margin: auto;
+  margin-top: 20px;
+  opacity: .95;
 }
 
 

@@ -11,6 +11,7 @@ var getEmbedCode = function(images, index){
 var mostRecent;
 var images;
 $(document).ready(function(done){
+  console.log("hello", token)
   $.ajax({
     type: "GET",
     dataType: "jsonp",
@@ -19,6 +20,7 @@ $(document).ready(function(done){
     url: "https://api.instagram.com/v1/users/2228535302/media/recent?access_token=" + token + "&count=5&callback=callbackFunction",
     success: function(data) {
       images=data.data
+      console.log(data)
       var time = moment(images[0].created_time*1000).local().format("dddd, MMMM Do, YYYY")
       var backgroundImage = images[0].images.standard_resolution.url
       console.log(images[0].caption)

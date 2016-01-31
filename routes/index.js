@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function (req, res) {
+  var token = process.env.INSTAGRAM_TOKEN
   var mailOpts, smtpTrans;
   smtpTrans = nodemailer.createTransport('SMTP', {
     service: 'gmail',
@@ -30,11 +31,11 @@ router.post('/', function (req, res) {
   smtpTrans.sendMail(mailOpts, function (error, response) {
     if (error) {
       console.log(error)
-      res.render('index', { msg: 'Error occured, message not sent.', err: true, page: 'index' })
+      res.render('index', { msg: 'Error occured, message not sent.', err: true, page: 'index', data: token })
     }
     //Yay!! Email sent
     else {
-        res.render('index', { msg: 'Message sent! Thank you.', err: false, page: 'index' })
+        res.render('index', { msg: 'Message sent! Thank you.', err: false, page: 'index', data: token })
     }
   });
 });
