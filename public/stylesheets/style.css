@@ -4,6 +4,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  padding-top: 80px;
 }
 body, html {
   width: 100%;
@@ -274,26 +275,26 @@ label, .btn-default{
   width: 100%;
   padding: 0px;
 }
-body {
-  padding-top: 80px;
-}
+
 
 @media all and (max-device-width: 380px)
 {
+    .events-text{
+      max-width: 80%;
+    }
+
+    .insta-feed{
+      max-width: 80%;
+    }
+
+    .contact-form{
+      max-width: 80%;
+    }
+
     .faqs-text{
       max-width: 80%;
     }
     .menu-image{
-      max-width: 80%;
-    }
-    .events-text{
-      max-width: 80%;
-    }
-    .contact-form{
-      max-with: 80%;
-    }
-
-    .insta-feed{
       max-width: 80%;
     }
 
@@ -301,6 +302,7 @@ body {
       margin-left: -20px;
       margin-right: -20px;
       padding: 20px;
+      height: 90px;
     }
   }
 }
