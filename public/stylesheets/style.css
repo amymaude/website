@@ -279,21 +279,36 @@ label, .btn-default{
 {
     .events-text{
       max-width: 80%;
+      margin-left: -20px;
+      margin-right: -20px;
+      padding: 20px;
     }
 
     .insta-feed <iframe{
       max-width: 80%;
+      margin-left: -20px;
+      margin-right: -20px;
+      padding: 20px;
     }
 
     .contact-form{
       max-width: 75%;
+      margin-left: -20px;
+      margin-right: -20px;
+      padding: 20px;
     }
 
     .faqs-text{
       max-width: 80%;
+      margin-left: -20px;
+      margin-right: -20px;
+      padding: 20px;
     }
     .menu-image{
       max-width: 80%;
+      margin-left: -20px;
+      margin-right: -20px;
+      padding: 20px;
     }
 
     #footer {
