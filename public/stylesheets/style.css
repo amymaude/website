@@ -223,7 +223,7 @@ label, .btn-default{
 }
 
 .events-text{
-  max-width: 500px;
+  max-width: 50%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -276,4 +276,31 @@ label, .btn-default{
 }
 body {
   padding-top: 80px;
+}
+
+@media all and (max-device-width: 380px)
+{
+    .faqs-text{
+      max-width: 80%;
+    }
+    .menu-image{
+      max-width: 80%;
+    }
+    .events-text{
+      max-width: 80%;
+    }
+    .contact-form{
+      max-with: 80%;
+    }
+
+    .insta-feed{
+      max-width: 80%;
+    }
+
+    #footer {
+      margin-left: -20px;
+      margin-right: -20px;
+      padding: 20px;
+    }
+  }
 }
