@@ -142,7 +142,7 @@ h2{
 /*contact-form*/
 .contact-form{
   padding:5%;
-  max-width: 75%;
+  max-width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -228,7 +228,7 @@ label, .btn-default{
   margin-right: auto;
 }
 .insta-feed < iframe{
-  max-width: 75%;
+  max-width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -248,14 +248,15 @@ label, .btn-default{
 }
 
 .menu-image{
-  max-width: 75%;
+  padding: 5%;
+  max-width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
 
 .faqs-text{
   padding: 5%;
-  max-width: 75%;
+  max-width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -285,7 +286,7 @@ label, .btn-default{
     }
 
     .contact-form{
-      max-width: 80%;
+      max-width: 75%;
     }
 
     .faqs-text{
