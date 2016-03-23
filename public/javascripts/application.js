@@ -11,7 +11,6 @@ var getEmbedCode = function(images, index){
 var mostRecent;
 var images;
 $(document).ready(function(done){
-  console.log("hello", token)
   $.ajax({
     type: "GET",
     dataType: "jsonp",
