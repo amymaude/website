@@ -1,10 +1,9 @@
 body {
-  background: url('/images/ribs_texture (1).jpg') no-repeat center center fixed;
+  background: url('/images/ribs_texture (2).jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  padding-top: 80px;
 }
 body, html {
   width: 100%;
@@ -17,10 +16,26 @@ body, html {
   src: url('/fonts/dust-west.woff');
 }
 
+.jumbotron{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 20px;
+  background: url('/images/food_truck_order (1).jpg') no-repeat center center fixed;
+}
 a {
   color: #00B7FF;
 }
 
+.btn-primary {
+  background-color: #800000;
+  float: right;
+  margin-bottom: 30px;
+  border: #800000;
+  width: 200px;
+}
+.btn-primary:hover{
+  background-color: #800000;
+}
 #wrap {
   min-height: 100%;
   height: auto !important;
@@ -45,20 +60,32 @@ h2{
 }
 
 .navbar-toggle{
-  z-index:20;
+  z-index:1000;
 }
 
-.navbar-brand,
-.navbar-nav li a {
-    line-height: 100px;
-    height: 100px;
-    padding-top: 10px;
+.navbar-brand {
+    padding: 5px 5px;
+    line-height: 50px;
+    height: 50px;
+}
 
+.navbar-nav li a {
+    line-height: 50px;
+    height: 50px;
+    padding: 0px 15px 0px 15px;
 }
 .navbar{
-  min-height: 100px;
+  background-color: #800000;
+  height: 50px;
+  border-color: #800000;
+  margin-bottom: 0px;
 }
-
+.navbar-collapse{
+  z-index: 200;
+}
+.navbar-default .navbar-nav>li>a {
+    color: white;
+}
 .navbar-left{
   padding-left: 10%;
   text-align: center;
@@ -81,7 +108,7 @@ h2{
 /*instagram-status update and image carousel*/
 .alert-info{
   width:100%;
-  margin: 20px auto 0px;
+  margin: 0px auto 0px;
   border-radius: 0px;
   padding: 2%;
   font: 18px arial black;
@@ -265,7 +292,6 @@ label, .btn-default{
 .row{
   width: 100%;
   margin: auto;
-  margin-top: 20px;
   opacity: .95;
 }
 

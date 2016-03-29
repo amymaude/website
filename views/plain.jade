@@ -2,7 +2,6 @@ block content
   script.
     var token = '#{locals.data}'
   script(src='/javascripts/application.js')
-  div(class="alert alert-info")
   div(id="carousel-example-generic" class="carousel slide" data-ride="carousel")
     ol(class="carousel-indicators" id="about")
       li(data-target="#carousel-example-generic" data-slide-to="0" class="active")
@@ -11,21 +10,17 @@ block content
       li(data-target="#carousel-example-generic" data-slide-to="3")
     div(class="carousel-inner" role="listbox")
       div(class="item active")
-        img(src="" alt="...")
         div(class="carousel-caption")
 
       div(class="item")
-        img(src="/images/DSC03910.jpg" alt="...")
-        div(class="carousel-caption")
-
-
-      div(class="item")
-        img(src="/images/delicious_ribs.jpg" alt="...")
         div(class="carousel-caption")
 
 
       div(class="item")
-        img(src="/images/eric_in_truck.jpg" alt="...")
+        div(class="carousel-caption")
+
+
+      div(class="item")
         div(class="carousel-caption")
 
     a(class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev")
@@ -47,9 +42,9 @@ block content
             div(class="panel panel-default")
               div(class="panel-heading" role="tab" id="headingOne")
                 h4(class="panel-title")
-                  a(role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne") Upslope Flatiron Park Fridays
+                  a(role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne") Spirit Hound Whisky Release
               div(id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne")
-                div(class="panel-body") Most Fridays, we're serving up our full menu outside Upslope at Flatiron park from 5:00 to 10:00 pm.
+                div(class="panel-body") Spirit Hound Whisky Release,  Friday April 1.  Spirit Hound Distillers, 4096 Ute Highway, Lyons, CO 80503.  Dinner will be served by 5pm, with live music from Gasoline Lollipops starting at 6pm.
             div(class="panel panel-default")
               div(class="panel-heading" role="tab" id="headingTwo")
                 h4(class="panel-title")

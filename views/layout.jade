@@ -1,9 +1,10 @@
 doctype html
 html
   include head.jade
-  include plain_nav.html
-  #wrap
-    block content
-  #push
-    block footer
-      include footer.jade
+  div(class='container')
+    include plain_nav.html
+    #wrap
+      block content
+    #push
+      block footer
+        include footer.jade

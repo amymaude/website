@@ -1,0 +1,230 @@
+@import url(http://fonts.googleapis.com/css?family=Asap:400,700);
+@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+.cal2 {
+  width: 100%;
+  background-color: #ebebeb;
+  font-weight: 700;
+  -moz-box-shadow: 0px 4px 0 #343434;
+  -webkit-box-shadow: 0px 4px 0 #343434;
+  box-shadow: 0px 4px 0 #343434;
+}
+.cal2 .clndr-controls {
+  padding: 14px;
+  background-color: #414141;
+  color: white;
+  text-align: center;
+}
+.cal2 .clndr-controls .clndr-previous-button {
+  float: left;
+  text-align: left;
+}
+.cal2 .clndr-controls .clndr-next-button {
+  float: right;
+  text-align: right;
+}
+.cal2 .clndr-controls .clndr-previous-button,
+.cal2 .clndr-controls .clndr-next-button {
+  width: 30px;
+  cursor: pointer;
+}
+.cal2 .clndr-controls .clndr-previous-button :hover,
+.cal2 .clndr-controls .clndr-next-button :hover {
+  opacity: 0.5;
+}
+.cal2 .clndr-grid {
+  float: left;
+  width: 65%;
+  border-right: 2px solid white;
+}
+.cal2 .clndr-grid .days-of-the-week {
+  width: 100%;
+  background-color: #3883a3;
+}
+.cal2 .clndr-grid .days-of-the-week .header-day {
+  float: left;
+  width: 14.2857%;
+  padding: 14px;
+  text-align: center;
+  color: white;
+}
+.cal2 .clndr-grid .days {
+  width: 100%;
+}
+.cal2 .clndr-grid .days .day,
+.cal2 .clndr-grid .days .empty {
+  float: left;
+  width: 14.2857%;
+  height: 66px;
+  padding: 24px 0;
+  text-align: center;
+  color: #4f4f4f;
+  background-color: #ebebeb;
+  border-bottom: 2px solid white;
+  background-image: url('triangle.svg');
+  background-size: cover;
+  background-position: center;
+}
+.cal2 .clndr-grid .days .day.event .day-number,
+.cal2 .clndr-grid .days .empty.event .day-number {
+  padding-bottom: 4px;
+  border-bottom: 2px solid #3883a3;
+}
+.cal2 .clndr-grid .days .day.adjacent-month .day-number,
+.cal2 .clndr-grid .days .empty.adjacent-month .day-number {
+  opacity: 0.3;
+}
+.cal2 .clndr-grid .days .today {
+  background-color: white;
+  background-image: none;
+}
+.cal2 .event-listing {
+  float: left;
+  width: 35%;
+}
+.cal2 .event-listing .event-listing-title {
+  padding: 14px;
+  background-color: #71bbd2;
+  text-align: center;
+  color: white;
+  letter-spacing: 1px;
+}
+.cal2 .event-listing .event-item {
+  padding: 14px;
+  color: #4f4f4f;
+}
+.cal2 .event-listing .event-item-location {
+  font-weight: 400;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+span.code {
+  padding: 0 2px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+}
+.block {
+  padding: 80px 0;
+  width: 100%;
+}
+.inner {
+  max-width: 960px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+.clearfix {
+  display: inline-block;
+}
+html[xmlns] .clearfix {
+  display: block;
+}
+* html .clearfix {
+  height: 1%;
+}
+strong {
+  font-weight: 700;
+}
+.bg-gray {
+  background-color: #414141;
+}
+.bg-red {
+  background-color: #ff5a45;
+}
+.bg-red a {
+  color: #ff5a45;
+}
+.bg-red a:hover {
+  background-color: #ffb4ab;
+  color: #212121;
+}
+.bg-blue {
+  background-color: #71bbd2;
+}
+.bg-green {
+  background-color: #97ce7f;
+}
+.bg-yellow {
+  background-color: #ddca9a;
+}
+.center {
+  text-align: center;
+}
+.header {
+  padding: 30px 0;
+}
+.clndr-logo {
+  margin: 0 auto;
+  width: 113px;
+  height: 113px;
+  background-image: url('clndr-logo.svg');
+}
+.banner-text {
+  text-align: center;
+  color: #f4f4f4;
+  letter-spacing: 1px;
+  font-weight: normal;
+  text-shadow: 2px 2px 2px #212121;
+}
+.banner-text.below {
+  margin-top: 30px;
+}
+.banner-text.below a {
+  background-color: transparent;
+  color: #97ce7f;
+}
+.banner-text.below a:hover {
+  color: #d3eac9;
+}
+.more-space {
+  margin-top: 3em;
+}
+@media all and (max-width: 768px) {
+  #full-clndr .clndr-grid {
+    width: 100%;
+    border: none;
+  }
+  #full-clndr .event-listing {
+    display: none;
+  }
+  h1.banner-text {
+    font-size: 28px;
+  }
+  .banner-text.below {
+    font-size: 16px;
+    word-wrap: break-word;
+  }
+  code[class*="language-"],
+  pre[class*="language-"] {
+    font-size: 14px;
+  }
+  #clndr-4 .day,
+  #clndr-4 .clndr-next-button,
+  #clndr-4 .clndr-previous-button {
+    height: 100px;
+  }
+  #clndr-4 .clndr-next-button,
+  #clndr-4 .clndr-previous-button {
+    padding-top: 30px;
+  }
+  #clndr-4 .events {
+    margin-top: 0.1em;
+  }
+  #clndr-4 .event-listing {
+    width: 1px;
+    height: 1px;
+  }
+  #clndr-4 .event-listing-title {
+    display: none;
+  }
+}
