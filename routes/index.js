@@ -22,7 +22,7 @@ router.post('/', function (req, res) {
   });
   mailOpts = {
     from: req.body.name +' <'+ req.body.email +'>',
-    to: "amy.bertken@gmail.com",
+    to: "pitmaster@rollinbonesbbq.com",
     subject: 'Website Contact Form',
     text: "from: " + req.body.name +", "+  req.body.email +"\nmessage: " + req.body.message
   };
