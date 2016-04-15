@@ -1,10 +1,9 @@
 body {
-  background: url('/images/ribs_texture (1).jpg') no-repeat center center fixed;
+  background: url('/images/packaging_paper_texture (2).jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  padding-top: 80px;
 }
 body, html {
   width: 100%;
@@ -17,10 +16,34 @@ body, html {
   src: url('/fonts/dust-west.woff');
 }
 
+
+.jumbotron{
+  height: 400px;
+  padding: 40px 20px 0px 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 20px;
+  background: url('/images/food_truck_order (2).jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 a {
   color: #00B7FF;
 }
 
+.btn-primary {
+  background-color: #800000;
+  float: right;
+  margin-bottom: 30px;
+  border: #800000;
+  width: 200px;
+}
+.btn-primary:hover{
+  background-color: #800000;
+}
 #wrap {
   min-height: 100%;
   height: auto !important;
@@ -45,20 +68,39 @@ h2{
 }
 
 .navbar-toggle{
-  z-index:20;
+  z-index:1000;
 }
 
-.navbar-brand,
-.navbar-nav li a {
-    line-height: 100px;
-    height: 100px;
-    padding-top: 10px;
+.navbar .nav > li {
+  z-index: 1001;
+  background-color: #800000;
 
+}
+.navbar-brand {
+    padding: 5px 5px;
+    line-height: 50px;
+    height: 50px;
+}
+
+.navbar-nav li a {
+    line-height: 50px;
+    height: 50px;
+    font-size: 24px;
+    padding: 0px 14px 0px 14px;
+    letter-spacing: 0.09em;
 }
 .navbar{
-  min-height: 100px;
+  background-color: #800000;
+  height: 50px;
+  border-color: #800000;
+  margin-bottom: 1px;
 }
-
+.navbar-collapse{
+  z-index: 200;
+}
+.navbar-default .navbar-nav>li>a {
+    color: white;
+}
 .navbar-left{
   padding-left: 10%;
   text-align: center;
@@ -76,33 +118,24 @@ h2{
 
 .carousel{
   margin: auto;
+  background-color: white;
+
 }
 
-/*instagram-status update and image carousel*/
-.alert-info{
-  width:100%;
-  margin: 20px auto 0px;
-  border-radius: 0px;
-  padding: 2%;
-  font: 18px arial black;
-  color: #f2f2f2;
-  border: none;
-  background-image: url('/images/marbled_background.png');
+
 
 }
 .item{
-  width: 100%;
+  width: auto%;
   padding: none;
-  position: relative;
-  height: 500px;
-  overflow: hidden;
-  background-color:black;
 }
+
+
 .item img{
-  position: absolute;
+
   left: 50%;
   top: 50%;
-  height: 100%;
+  max-height: 100%;
   width: auto;
   -webkit-transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
@@ -227,11 +260,7 @@ label, .btn-default{
   margin-left: auto;
   margin-right: auto;
 }
-.insta-feed < iframe{
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-}
+
 .panel-title {
   font-size: 30px;
 }
@@ -265,10 +294,12 @@ label, .btn-default{
 .row{
   width: 100%;
   margin: auto;
-  margin-top: 20px;
   opacity: .95;
 }
 
+.hovered-date{
+  background-color: #a9a9a9;
+}
 .body{
   width: 100%;
   padding: 0px;

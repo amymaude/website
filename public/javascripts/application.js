@@ -1,31 +1,57 @@
+
+var activeImage;
+var activeEmbeddedInstaIndex=0;
+
+var images;
+
 var getEmbedCode = function(images, index){
+  var url = "https://api.instagram.com/oembed/?url=" + images[index].link + "&OMIT_SCRIPT=true";
   $.ajax({
     type: "GET",
     dataType: "jsonp",
-    url:"https://api.instagram.com/oembed/?url=" + images[index].link,
+    url: url,
     success: function(data){
-      mostRecent = data.html;
+      activeImage = data.html;
+      appendImage(activeImage)
+      instgrm.Embeds.process()
     }
   })
-}
-var mostRecent;
-var images;
-$(document).ready(function(done){
+};
+
+
+var appendImage = function(image){
+  var imageId="img"+activeEmbeddedInstaIndex;
+  if(activeEmbeddedInstaIndex == 0){
+    $(".carousel-inner").append('<div class="item"' + ' id=' + imageId + '>'+ image +'</div>')
+    $('.instagram-media').css({"max-width": "500px", "margin-right":"auto", "margin-left": "auto"});
+
+    activeEmbeddedInstaIndex += 1
+    console.log("in append Image checking if this is the first item")
+    $("#img0").addClass("active");
+    getEmbedCode(images, activeEmbeddedInstaIndex)
+  }else{
+    $(".item").last().before('<div class="item"' + ' id=' + imageId + '>'+ image +'</div>')
+    $('.instagram-media').css({"max-width": "500px", "margin-right":"auto", "margin-left": "auto"});
+  }
+};
+
+
+
+$(document).ready(function(){
+  $('.carousel').carousel({
+    interval: false
+  })
   $.ajax({
     type: "GET",
     dataType: "jsonp",
     jsonp : "callback",
     // jsonpCallback: "jsonpcallback",
-    url: "https://api.instagram.com/v1/users/2228535302/media/recent?access_token=" + token + "&count=5&callback=callbackFunction",
+    url: "https://api.instagram.com/v1/users/2228535302/media/recent?access_token=" + token + "&count=10&callback=callbackFunction",
     success: function(data) {
-      images=data.data
+      console.log('in success after doc ready')
       console.log(data)
-      var time = moment(images[0].created_time*1000).local().format("dddd, MMMM Do, YYYY")
-      var backgroundImage = images[0].images.standard_resolution.url
-      console.log(images[0].caption)
-      $(".alert-info").append(time + ": "+ images[0].caption.text)
-      $(".item img").first().attr("src", backgroundImage)
-      getEmbedCode(images, 0);
+      images=data.data
+      getEmbedCode(images, activeEmbeddedInstaIndex);
     }
   })
   $(".navbar-toggle").on("click", function(event){
@@ -33,9 +59,56 @@ $(document).ready(function(done){
     $('.navbar-left').css("padding-left", "0");
     $('.navbar-right').css("padding-right", "0");
   })
+  $('#carousel-example-generic').on('slide.bs.carousel.right', function () {
+    if(activeEmbeddedInstaIndex < 9){
+      var activeImgId = "#img" + (activeEmbeddedInstaIndex+1);
+      console.log(activeImgId)
+      console.log($(activeImgId).length)
+      if(!($(activeImgId).length > 0) && activeEmbeddedInstaIndex < 9){
+        activeEmbeddedInstaIndex = activeEmbeddedInstaIndex+1;
+        getEmbedCode(images, activeEmbeddedInstaIndex)
+        setTimeout(function(){}, 500)
+      }
+    };
+  })
 })
 
-$(document).ajaxComplete(function(){
-  $('.insta-feed').append(mostRecent);
-  setTimeout(function(){$('iframe').css({"max-width": "500", "margin-right":"auto", "margin-left": "auto"})}, 500);
-})
+
+
+
+
+
+
+  var eventArray = [
+        { date: '2016-04-15', shortTitle: 'UBC', title: 'Upslope Brewing Company at Flatirons Park', url: 'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=upslope%20brewing%20taproom&tbs=lf:1,lf_ui:3&rflfq=1&rlha=0&tbm=lcl&rlfi=hd:;si:'},
+        { date: '2016-04-22', shortTitle: 'UBC', title: 'Upslope Brewing Company at Flatirons Park', url: 'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=upslope%20brewing%20taproom&tbs=lf:1,lf_ui:3&rflfq=1&rlha=0&tbm=lcl&rlfi=hd:;si:' },
+        { date: '2016-04-29', shortTitle: 'UBC', title: 'Upslope Brewing Company at Flatirons Park', url: 'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=upslope%20brewing%20taproom&tbs=lf:1,lf_ui:3&rflfq=1&rlha=0&tbm=lcl&rlfi=hd:;si:' },
+        { date: '2016-05-06', shortTitle: 'UBC', title: 'Upslope Brewing Company at Flatirons Park', url: 'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=upslope%20brewing%20taproom&tbs=lf:1,lf_ui:3&rflfq=1&rlha=0&tbm=lcl&rlfi=hd:;si:' }
+
+    ]
+
+
+
+    clndr = $('#full-clndr').clndr({
+      ready: function() {
+        var self = this;
+        $(this.element).on('mouseover', '.day', function(e) {
+          var target = self.buildTargetObject(e.currentTarget, true);
+          target.events.forEach(function(event){
+            var classToHighlight =  '.' + event.date;
+            $(classToHighlight).addClass('hovered-date');
+          })
+        });
+        $(this.element).on('mouseleave', '.day', function(e) {
+          var target = self.buildTargetObject(e.currentTarget, true);
+          target.events.forEach(function(event){
+            var classToHighlight =  '.' + event.date;
+            $(classToHighlight).removeClass('hovered-date');
+          })
+        });
+      },
+      template: $('#full-clndr-template').html(),
+      events: eventArray,
+
+      forceSixRows: true
+    });
