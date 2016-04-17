@@ -28,21 +28,23 @@ block content
             div(class="panel panel-default")
               div(class="panel-heading" role="tab" id="headingOne")
                 h4(class="panel-title")
-                  a(role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne") Spirit Hound Whisky Release
-              div(id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne")
-                div(class="panel-body") Spirit Hound Whisky Release,  Friday April 1.  Spirit Hound Distillers, 4096 Ute Highway, Lyons, CO 80503.  Dinner will be served by 5pm, with live music from Gasoline Lollipops starting at 6pm.
+                  a(class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseThree") Cinco de Mayo
+              div(id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
+                div(class="panel-body") We’ll be serving BBQ tacos with fixins from our friends at McDevitt Taco Supply! Smoked pork, chopped brisket and smoked chicken chipotle tacos with super heady toppings at Upslope Lee Hill from 4-8pm on Thursday May 5
             div(class="panel panel-default")
               div(class="panel-heading" role="tab" id="headingTwo")
                 h4(class="panel-title")
-                  a(class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo") Other events
+                  a(class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo") May 7, Special Saturday appearance at Upslope Flatiron Park
               div(id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
-                div(class="panel-body") TBD
+                div(class="panel-body") Upslope Flatiron Park, Saturday 2-8pm
             div(class="panel panel-default")
               div(class="panel-heading" role="tab" id="headingThree")
                 h4(class="panel-title")
-                  a(class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree") And still more
-              div(id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
-                div(class="panel-body") TBD
+                  a(role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne") May 21, Spirit Hound Distillers Live Music
+              div(id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree")
+                div(class="panel-body") Spirit Hound Distillery, 4196 Ute Highway, Lyons, CO 80503. We had so much fun at the whisky release party we just had to come back! BBQ served from 2-7pm with live music by Bonnie and Taylor Simms starting at 4pm.
+
+
       div(class="col-md-6 col-sm-12 menu" id="menu")
         div(class="menu-image")
           img(class="img-responsive" src="/images/entire-menu.png")
