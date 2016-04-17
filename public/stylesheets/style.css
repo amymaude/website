@@ -197,6 +197,11 @@ label, .btn-default{
 
 
 
+.img-responsive.logo{
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 150px;
+}
 
 /*.announcements{
   margin-top: 20px;

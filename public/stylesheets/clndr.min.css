@@ -206,11 +206,11 @@ strong {
 }
 @media all and (max-width: 768px) {
   #full-clndr .clndr-grid {
-    width: 100%;
-    border: none;
+    display: none;
   }
   #full-clndr .event-listing {
-    display: none;
+    width: 100%;
+    bordner: none;
   }
   h1.banner-text {
     font-size: 28px;
