@@ -1,13 +1,19 @@
-h1 Sign In
-  div.content
-    form(action='/', name='login', id='login', method='post')
-      fieldset
-        p
-          label(for='name') Username:
-          br
-          input(name='name', type='text', value='', id='name')
-        p
-          label(for='email') Password:
-          br
-          input(name='email', type='text', value='', id='email')
-        p
+html
+  include head.jade
+  div(class='container')
+    h1 Sign In
+      if(message.length > 0)
+        div(class="alert alert-danger") #{message}
+      div.content
+        form(action='/login', name='admin', id='login', method='post')
+          fieldset
+            p
+              label(for='username') Username:
+              br
+              input(name='username', type='text', value='', id='name')
+            p
+              label(for='password') Password:
+              br
+              input(name='password', type='password', value='', id='email')
+            p
+              input(type='submit', value="Log In")

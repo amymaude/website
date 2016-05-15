@@ -35,12 +35,19 @@ var appendImage = function(image){
   }
 };
 
+function getToken (){
 
+    $.get("/", function(data){
+      console.log(data.locals)
+  })
+};
+getToken();
 
 $(document).ready(function(){
   $('.carousel').carousel({
     interval: false
   })
+
   $.ajax({
     type: "GET",
     dataType: "jsonp",
@@ -48,8 +55,6 @@ $(document).ready(function(){
     // jsonpCallback: "jsonpcallback",
     url: "https://api.instagram.com/v1/users/2228535302/media/recent?access_token=" + token + "&count=10&callback=callbackFunction",
     success: function(data) {
-      console.log('in success after doc ready')
-      console.log(data)
       images=data.data
       getEmbedCode(images, activeEmbeddedInstaIndex);
     }
@@ -71,6 +76,8 @@ $(document).ready(function(){
       }
     };
   })
+
+
 })
 
 
@@ -114,3 +121,41 @@ $(document).ready(function(){
 
       forceSixRows: true
     });
+
+
+var myFirebaseRef = new Firebase("https://crackling-fire-6610.firebaseio.com/");
+myFirebaseRef.on("value", function(snapshot) {
+  var siteText = snapshot.val().SiteText;
+  $(".row.about").append("<h2>" + siteText.About.Title + "</h2> <span class='about-text'>"+ siteText.About.Text + "</span>");
+  for(prop in (siteText.Events)){
+    console.log(prop)
+    $(".events-panels").append("<div class='panel panel-default'>\
+      <div class='panel-heading' role='tab' id='heading" + prop + "'>\
+       <h4 class='panel-title'>\
+        <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#"+ prop + "' aria-expanded='false' aria-controls=" + prop + ">" + siteText.Events[prop].title +"</a>\
+       </h4>\
+      </div>\
+      <div id=" + prop +" class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading" +prop +"'>\
+       <div class='panel-body' contenteditable='true'>" + siteText.Events[prop].shortDesc + "</input>\
+       </div>\
+      </div>\
+    </div>");
+
+  }
+
+  for(prop in (siteText.FAQs)){
+    $(".faqs-panels").append("<div class='panel panel-default'>\
+      <div class='panel-heading' role='tab' id='heading" + prop + "'>\
+       <h4 class='panel-title'>\
+        <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#"+ prop + "' aria-expanded='false' aria-controls=" + prop + ">" + siteText.FAQs[prop].question + "</a>\
+       </h4>\
+      </div>\
+      <div id=" + prop +" class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading" +prop +"'>\
+       <div class='panel-body'>" + siteText.FAQs[prop].answer + "\
+       </div>\
+      </div>\
+    </div>");
+  }
+
+
+});

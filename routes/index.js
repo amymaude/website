@@ -1,12 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var flash = require('connect-flash');
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  console.log(req.user)
   var token = process.env.INSTAGRAM_TOKEN
-  res.render('index', { title: 'Rollin\' Bones', data: token});
+  var user = req.user || null
+  res.render('index', { title: 'Rollin\' Bones', data: token, user: user});
 });
 
 router.post('/', function (req, res) {
@@ -41,23 +46,34 @@ router.post('/', function (req, res) {
 });
 
 
-
-router.get('/admin', function(req, res){
-  res.render('signin', {title: 'Admin Sign In'})
+router.get('/login', function(req, res){
+  var user = req.user || null
+  res.render('signin', {title: "Sign-in", message: req.flash('error'),  user: user})
 })
 
-router.route('/contact').get(function(req, res, next){
-  res.render('contact', {title: 'Contact'});
-})
+router.post('/login', passport.authenticate('local-login', {
+    successRedirect: '/admin',
+    failureRedirect: '/login',
+    failureFlash: true })
+);
 
+router.get('/admin', function (req, res){
+  console.log(req.user)
+  if (!req.user) {
+       return res.redirect('/');
+     }
+     else {
+       return res.render('admin', {title: "Edit the site", user: req.user});
+     }
+}),
 
-router.get('/about', function(req, res, next){
-  res.render('about', {title: 'About' });
+router.get('/logout', function(req, res){
+  console.log("in logout")
+  req.logout();
+  req.session.destroy();
+  res.redirect('/'); //Can fire before session is destroyed?
 });
 
-router.get('/menu', function(req, res, next){
-  res.render('menu', {title: 'Menu'});
-});
 
 router.get('/catering', function(req, res, next){
   res.render('catering', {title: 'Catering'});

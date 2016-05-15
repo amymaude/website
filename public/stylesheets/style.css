@@ -8,7 +8,11 @@ body {
 body, html {
   width: 100%;
   height: 100%;
-  font: 24px "western";
+
+}
+
+h1, h2, h3, h4, li>a{
+  font-family: "western";
 }
 
 @font-face{
@@ -131,8 +135,8 @@ h2{
 }
 
 
-.item img{
 
+.item < img{
   left: 50%;
   top: 50%;
   max-height: 100%;
@@ -200,7 +204,8 @@ label, .btn-default{
 .img-responsive.logo{
   margin-left: auto;
   margin-right: auto;
-  padding-top: 150px;
+  margin-top: 75px;
+  margin-bottom: 75px;
 }
 
 /*.announcements{
@@ -266,6 +271,11 @@ label, .btn-default{
   margin-right: auto;
 }
 
+.col-md-6>img{
+
+  margin-left:auto;
+  margin-right:auto;
+}
 .panel-title {
   font-size: 30px;
 }
@@ -274,19 +284,7 @@ label, .btn-default{
   letter-spacing: 1.5px;
 }
 
-.faqs-menu{
-  padding-top: 20px;
-  background-color: white;
-  opacity: .95;
-  padding-bottom: 20px;
-}
 
-.menu-image{
-  padding: 5%;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .faqs-text{
   padding: 5%;

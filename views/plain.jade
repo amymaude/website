@@ -2,12 +2,8 @@ block content
   script.
     var token = '#{locals.data}'
   script(src='/javascripts/application.js')
+
   div(id="carousel-example-generic" class="carousel slide" data-ride="carousel")
-    ol(class="carousel-indicators" id="about")
-      li(data-target="#carousel-example-generic" data-slide-to="0" class="active")
-      li(data-target="#carousel-example-generic" data-slide-to="1")
-      li(data-target="#carousel-example-generic" data-slide-to="2")
-      li(data-target="#carousel-example-generic" data-slide-to="3")
     div(class="carousel-inner" role="listbox")
     a(class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev")
       span(class="glyphicon glyphicon-chevron-left" aria-hidden="true")
@@ -17,35 +13,15 @@ block content
       span(class="sr-only") Next
   div(class="container-responsive body")
     div(class="row about")
-      h2 BBQ PHD
-      span(class="about-text") Dr. Eric P. Holinger built Rollin' Bones BBQ with his two big hands, a penchant for experimentation, and the best ingredients this side of the Mississippi. In 2015, Eric left the field of biology to embark on a journey into the science of smoked meat and delicious sauce. During this first year, the Rollin' Bones BBQ team shared the meat-fruits of Eric's labor with families, breweries, and even a friendly puppy every now and then, and we're looking forward to sitting down at a picnic table with even more of you in 2016.
 
     div(class="row insta-events")
-      div(class="col-md-6 col-sm-12 menu" id="menu")
+      div(class="col-md-6 col-sm-12 menu" id="logo")
         div(class="logo-pane")
           img(class="img-responsive logo" src="/images/RollinBanner.png")
       div(class="col-md-6 col-sm-12 events")
         div(class="events-text")
           h2 Events
-          div(class="panel-group" id="accordion" role="tablist" aria-multiselectable="true")
-            div(class="panel panel-default")
-              div(class="panel-heading" role="tab" id="headingOne")
-                h4(class="panel-title")
-                  a(class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseThree") Cinco de Mayo
-              div(id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne")
-                div(class="panel-body") We’ll be serving BBQ tacos with fixins from our friends at McDevitt Taco Supply! Smoked pork, chopped brisket and smoked chicken chipotle tacos with super heady toppings at Upslope Lee Hill from 4-8pm on Thursday May 5
-            div(class="panel panel-default")
-              div(class="panel-heading" role="tab" id="headingTwo")
-                h4(class="panel-title")
-                  a(class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo") May 7, Special Saturday appearance at Upslope Flatiron Park
-              div(id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
-                div(class="panel-body") Upslope Flatiron Park, Saturday 2-8pm
-            div(class="panel panel-default")
-              div(class="panel-heading" role="tab" id="headingThree")
-                h4(class="panel-title")
-                  a(role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseOne") May 21, Spirit Hound Distillers Live Music
-              div(id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree")
-                div(class="panel-body") Spirit Hound Distillery, 4196 Ute Highway, Lyons, CO 80503. We had so much fun at the whisky release party we just had to come back! BBQ served from 2-7pm with live music by Bonnie and Taylor Simms starting at 4pm.
+          div(class="panel-group events-panels" id="events-accordion" role="tablist" aria-multiselectable="true")
 
 
     div(class="row menu insta-events" id="menu")
@@ -63,7 +39,12 @@ block content
         div(class="col-md-6 logo")
           img(class="img-responsive logo" src="/images/RollinMonogram.png")
 
-    div(class="row faqs-menu" id="contact")
+    div(class="row faqs-menu insta-events" id="contact")
+      div(class="col-md-6 col-sm-12 faqs")
+        div(class="faqs-text")
+          h2 FAQs
+          div(class="panel-group faqs-panels" id="faq-accordion" role="tablist" aria-multiselectable="true")
+
       div(class="col-md-6 col-sm-12")
         div(class="contact-form")
           p Questions about our menu? Interested in catering?
@@ -71,40 +52,17 @@ block content
           div.content
             form(class="form-horizontal" action='/', name='contactus', id='contactus', method='post')
               div(class="form-group")
-                label(for='name' class="col-sm-2 control-label") Name:
+                label(for='name' class="col-sm-4 control-label") Name:
                 div(class="col-sm-6")
                   input(class="form-control" name='name', type='text', value='', id='name')
               div(class="form-group")
-                label(for='email' class="col-sm-2 control-label") Email:
+                label(for='email' class="col-sm-4 control-label") Email:
                 div(class="col-sm-6")
                   input(class="form-control", name='email', type='email', value='', id='email')
               div(class="form-group")
-                label(for='message' class="col-sm-2 control-label") Message:
-                div(class="col-sm-10")
+                label(for='message' class="col-sm-4 control-label") Message:
+                div(class="col-sm-8")
                   textarea(class="form-control", name='message', rows='10', id='message')
               div(class="form-group")
                 div(class="col-sm-offset-2 col-sm-10")
                   button(name='submit', type="submit", class="btn btn-default", value='Send', id='submit') Submit
-
-      div(class="col-md-6 col-sm-12 faqs")
-        div(class="faqs-text")
-          h2 FAQs
-          div(class="panel-group" id="faq-accordion" role="tablist" aria-multiselectable="true")
-            div(class="panel panel-default")
-              div(class="panel-heading" role="tab" id="headingOne")
-                h4(class="panel-title")
-                  a(role="button" data-toggle="collapse" data-parent="#faq-accordion" href="#faq-collapseOne" aria-expanded="true" aria-controls="collapseOne") Do you have vegetarian options? Gluten free?
-              div(id="faq-collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne")
-                div(class="panel-body") Though we love our meat, we offer vegetarian options and sides every week. Try out our Tofurkey Italian Sausage with classic smoked beans.  Vegan? Gluten-free? We can accomodate your needs, too.
-            div(class="panel panel-default")
-              div(class="panel-heading" role="tab" id="headingTwo")
-                h4(class="panel-title")
-                  a(class="collapsed" role="button" data-toggle="collapse" data-parent="#faq-accordion" href="#faq-collapseTwo" aria-expanded="false" aria-controls="collapseTwo") Can you serve food at my wedding/office party/event?
-              div(id="faq-collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo")
-                div(class="panel-body") We do! Just fill out the contact form below and we can contact you.
-            div(class="panel panel-default")
-              div(class="panel-heading" role="tab" id="headingThree")
-                h4(class="panel-title")
-                  a(class="collapsed" role="button" data-toggle="collapse" data-parent="#faq-accordion" href="#faq-collapseThree" aria-expanded="false" aria-controls="collapseThree") Do you take credit cards?
-              div(id="faq-collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree")
-                div(class="panel-body") Yes.
