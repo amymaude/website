@@ -86,19 +86,20 @@ $(document).ready(function(){
 
 
 
-  var eventArray = [
-        { date: '2016-04-15', shortTitle: 'UBC', title: 'Upslope Brewing Company at Flatirons Park', url: 'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=upslope%20brewing%20taproom&tbs=lf:1,lf_ui:3&rflfq=1&rlha=0&tbm=lcl&rlfi=hd:;si:'},
-        { date: '2016-04-22', shortTitle: 'UBC', title: 'Upslope Brewing Company at Flatirons Park', url: 'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=upslope%20brewing%20taproom&tbs=lf:1,lf_ui:3&rflfq=1&rlha=0&tbm=lcl&rlfi=hd:;si:' },
-        { date: '2016-04-29', shortTitle: 'UBC', title: 'Upslope Brewing Company at Flatirons Park', url: 'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=upslope%20brewing%20taproom&tbs=lf:1,lf_ui:3&rflfq=1&rlha=0&tbm=lcl&rlfi=hd:;si:' },
-        { date: '2016-05-06', shortTitle: 'UBC', title: 'Upslope Brewing Company at Flatirons Park', url: 'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=upslope%20brewing%20taproom&tbs=lf:1,lf_ui:3&rflfq=1&rlha=0&tbm=lcl&rlfi=hd:;si:' },
-        { date: '2016-05-05', shortTitle: 'Cinco de Mayo', title: 'Cinco de Mayo with McDevitt Taco Supply', url: ''},
-        { date: '2016-05-07', shortTitle: 'UBC', title: 'Special Saturday Appearance at Upslope Brewing Company', url: 'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=upslope%20brewing%20taproom&tbs=lf:1,lf_ui:3&rflfq=1&rlha=0&tbm=lcl&rlfi=hd:;si:'},
-        { date: '2016-05-21', shortTitle: 'SHD', title: 'Live Music and BBQ at Spirit Hound Distillery', url: 'https://www.google.com/maps/place/Spirit+Hound+Distillers/@40.2156531,-105.2560815,15z/data=!4m2!3m1!1s0x0:0x9eabfe68dad7c367'}
-    ]
+var eventArray=[];
+  // var eventArray = [
+  //       { date: '2016-04-15', shortTitle: 'UBC', title: 'Upslope Brewing Company at Flatirons Park', url: 'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=upslope%20brewing%20taproom&tbs=lf:1,lf_ui:3&rflfq=1&rlha=0&tbm=lcl&rlfi=hd:;si:'},
+  //       { date: '2016-04-22', shortTitle: 'UBC', title: 'Upslope Brewing Company at Flatirons Park', url: 'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=upslope%20brewing%20taproom&tbs=lf:1,lf_ui:3&rflfq=1&rlha=0&tbm=lcl&rlfi=hd:;si:' },
+  //       { date: '2016-04-29', shortTitle: 'UBC', title: 'Upslope Brewing Company at Flatirons Park', url: 'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=upslope%20brewing%20taproom&tbs=lf:1,lf_ui:3&rflfq=1&rlha=0&tbm=lcl&rlfi=hd:;si:' },
+  //       { date: '2016-05-06', shortTitle: 'UBC', title: 'Upslope Brewing Company at Flatirons Park', url: 'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=upslope%20brewing%20taproom&tbs=lf:1,lf_ui:3&rflfq=1&rlha=0&tbm=lcl&rlfi=hd:;si:' },
+  //       { date: '2016-05-05', shortTitle: 'Cinco de Mayo', title: 'Cinco de Mayo with McDevitt Taco Supply', url: ''},
+  //       { date: '2016-05-07', shortTitle: 'UBC', title: 'Special Saturday Appearance at Upslope Brewing Company', url: 'https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=upslope%20brewing%20taproom&tbs=lf:1,lf_ui:3&rflfq=1&rlha=0&tbm=lcl&rlfi=hd:;si:'},
+  //       { date: '2016-05-21', shortTitle: 'SHD', title: 'Live Music and BBQ at Spirit Hound Distillery', url: 'https://www.google.com/maps/place/Spirit+Hound+Distillers/@40.2156531,-105.2560815,15z/data=!4m2!3m1!1s0x0:0x9eabfe68dad7c367'}
+  //   ]
 
 
-
-    clndr = $('#full-clndr').clndr({
+var getCalendar = function(){
+  clndr = $('#full-clndr').clndr({
       ready: function() {
         var self = this;
         $(this.element).on('mouseover', '.day', function(e) {
@@ -121,25 +122,25 @@ $(document).ready(function(){
 
       forceSixRows: true
     });
-
+  }
 
 var myFirebaseRef = new Firebase("https://crackling-fire-6610.firebaseio.com/");
 myFirebaseRef.on("value", function(snapshot) {
   var siteText = snapshot.val().SiteText;
   $(".row.about").append("<h2>" + siteText.About.Title + "</h2> <span class='about-text'>"+ siteText.About.Text + "</span>");
   for(prop in (siteText.Events)){
-    console.log(prop)
-    $(".events-panels").append("<div class='panel panel-default'>\
-      <div class='panel-heading' role='tab' id='heading" + prop + "'>\
-       <h4 class='panel-title'>\
-        <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#"+ prop + "' aria-expanded='false' aria-controls=" + prop + ">" + siteText.Events[prop].title +"</a>\
-       </h4>\
-      </div>\
-      <div id=" + prop +" class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading" +prop +"'>\
-       <div class='panel-body' contenteditable='true'>" + siteText.Events[prop].shortDesc + "</input>\
-       </div>\
-      </div>\
-    </div>");
+    if(siteText.Events[prop].inMainPage === true){
+      $(".events-panels").append("<div class='panel panel-default'>\
+        <div class='panel-heading' role='tab' id='heading" + prop + "'>\
+         <h4 class='panel-title'>\
+          <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#"+ prop + "' aria-expanded='false' aria-controls=" + prop + ">" + siteText.Events[prop].title +"</a>\
+         </h4>\
+        </div>\
+        <div id=" + prop +" class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading" +prop +"'>\
+         <div class='panel-body' contenteditable='true'>" + siteText.Events[prop].shortDesc + "</input>\
+         </div>\
+        </div>\
+      </div>")};
 
   }
 
@@ -157,5 +158,9 @@ myFirebaseRef.on("value", function(snapshot) {
     </div>");
   }
 
-
+  for(prop in (siteText.Events)){
+    eventArray.push(siteText.Events[prop])
+  }
+  console.log(eventArray)
+  getCalendar();
 });

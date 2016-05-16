@@ -7,7 +7,6 @@ $(document).on('click', '#submitEvents', function(e){e.preventDefault(); saveEve
 $(document).on('click', '#addEvent', function(e){addEvent()});
 $(document).on('click', '.delete-event', function(e){var event = $(this).attr('id'); deleteEvent(event)})
 
-
 var saveAbout = function(){
 
   var title = $('#aboutTitle').val();
@@ -25,7 +24,10 @@ var saveEvents = function(){
       var title = $(this).find('#eventTitle').val();
       var text = $(this).find('#eventText').val();
       var date = $(this).find('#eventDate').val();
-      eventRef.update({date: date, shortDesc: text, title: title})
+      var url = $(this).find('#eventMapsUrl').val();
+      var checked = $(this).find('#inMainPage').prop('checked') ? true : false;
+      console.log(checked)
+      eventRef.update({date: date, shortDesc: text, title: title, url: url, inMainPage: checked})
     }else{
       alert('Updated or added event date was invalid')
     }
@@ -33,11 +35,15 @@ var saveEvents = function(){
 
 }
 
+
 var deleteEvent= function(event){
-  console.log("hie", event)
   var eventRef = new Firebase('https://crackling-fire-6610.firebaseio.com/SiteText/Events/'+event);
   if (confirm("Are you sure you want to delete this event?")){
-    eventRef.remove()
+    if (event==="new"){
+      $('.event-form-group#new').remove();
+    }else{
+      eventRef.remove()
+    }
   }
   return false;
 }
@@ -47,14 +53,34 @@ var addEvent = function(){
     "<div class='event-form-group' id='new'>\
       <div class='form-group'>\
         <label for='eventTitle' class='col-sm-2 control-label'>Event Title </label>\
-        <div class='col-sm-8'>\
-          <input type='text' id='eventTitle' class='form-control' value=''>\
+        <div class='input-group'>\
+          <div class='col-sm-8'>\
+            <input type='text' id='eventTitle' class='form-control' value=''>\
+          </div>\
+          <span class='input-group-btn'>\
+            <button type='button' class='btn btn-danger delete-event' id='new'>Delete Event</button>\
+          </span>\
+        </div>\
+      </div>\
+      <div class='form-group'>\
+        <div class='col-sm-offset-2 col-sm-10'>\
+          <div class='checkbox'>\
+            <label>\
+              <input id='inMainPage' type='checkbox' value='true'> This is a featured event & should be listed on the main page dropdown\
+            </label>\
+          </div>\
         </div>\
       </div>\
       <div class='form-group'>\
         <label for='eventDate' class='col-sm-2 control-label'>Event Date </label>\
         <div class='col-sm-6'>\
           <input type='date' id='eventDate' class='form-control'>\
+        </div>\
+      </div>\
+      <div class='form-group'>\
+        <label for='eventMapsUrl' class='col-sm-2 control-label'>Google Maps Url </label>\
+        <div class='col-sm-6'>\
+          <input type='text' id='eventMapsUrl' class='form-control'>\
         </div>\
       </div>\
       <div class='form-group'>\
@@ -85,11 +111,18 @@ myFirebaseRef.on("value", function(snapshot) {
           <textarea class='form-control col-sm-6' id='aboutText' rows='6'>" + siteText.About.Text + "</textarea>\
         </div>\
       </div>\
-      <button type='submit' class='btn btn-default delete-event' id='submitAbout'>Save About Section Changes</button>\
+      <div class='form-group'>\
+        <div class='col-sm-offset-2 col-sm-10'>\
+          <button type='submit' class='btn btn-primary delete-event' id='submitAbout'>Save About Section Changes</button>\
+        </div>\
+      </div>\
     </form>");
 
 
   for(prop in (siteText.Events)){
+    var url = (siteText.Events[prop].url) ? siteText.Events[prop].url : '';
+    var checked = siteText.Events[prop].inMainPage ? "checked" : '';
+
    eventPanels = eventPanels +
     "<div class='event-form-group' id='" + prop+"'>\
       <div class='form-group'>\
@@ -104,9 +137,24 @@ myFirebaseRef.on("value", function(snapshot) {
         </div>\
       </div>\
       <div class='form-group'>\
+        <div class='col-sm-offset-2 col-sm-10'>\
+          <div class='checkbox'>\
+            <label>\
+              <input id='inMainPage' type='checkbox' "+checked+"> This is a featured event & should be listed on the main page dropdown\
+            </label>\
+          </div>\
+        </div>\
+      </div>\
+      <div class='form-group'>\
         <label for='eventDate' class='col-sm-2 control-label'>Event Date </label>\
         <div class='col-sm-6'>\
           <input type='date' id='eventDate' class='form-control' value='" + siteText.Events[prop].date + "'>\
+        </div>\
+      </div>\
+      <div class='form-group'>\
+        <label for='eventMapsUrl' class='col-sm-2 control-label'>Google Maps URL </label>\
+        <div class='col-sm-6'>\
+          <input type='text' id='eventMapsUrl' class='form-control' value='" + url + "' placeholder='http://www.google.com'>\
         </div>\
       </div>\
       <div class='form-group'>\
@@ -117,8 +165,10 @@ myFirebaseRef.on("value", function(snapshot) {
       </div>\
     </div>"
   }
-  eventPanels += "<button type='submit' class='btn btn-default' id='submitEvents'>Save Events Section Changes</button>\
-  <button type='button' class='btn btn-primary' id='addEvent'>Add Event</button>\
+  eventPanels += "<div class='form-group' style='padding-top: 20px'><div class='col-sm-offset-2 col-sm-10'><button type='submit' class='btn btn-primary' id='submitEvents'>Save Events Section Changes</button>\
+      <button type='button' class='btn btn-default' id='addEvent'>Add Event</button>\
+    </div>\
+  </div>\
 </form>";
   $('.edit-events').replaceWith(eventPanels);
 

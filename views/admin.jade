@@ -6,6 +6,7 @@ html
     meta(name="viewport" content="width=device-width, inital-scale=1 ")
     link(rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css')
     link(rel='stylesheet' href='/stylesheets/clndr.min.css')
+    link(rel='stylesheet' href='/stylesheets/admin.css')
     script(src="https://code.jquery.com/jquery-2.1.3.min.js")
     script(src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js")
@@ -19,14 +20,15 @@ html
     div(class='container')
       if(user)
         form(method="GET" action="/logout")
-          input(type="submit" value="logout")
+          input(class="btn btn-warning pull-right" type="submit" value="Sign Out")
       div(class="container-responsive")
         div(class="row")
           h2 About Section
         div(class="row edit-about")
           form(class='form-horizontal edit-about')
-        div(class="row")
-          h2 Events Dropdown
+        div(class="row" style="padding-top: 50px")
+          h2 Events Calendar/Dropdown
+          p <i> Events are stored by date. If you update an event's date, simply remember to delete the event associated with the original date<i>
         div(class="row edit-events")
           div(class="edit-events-text")
             h2 Events
