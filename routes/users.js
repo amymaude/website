@@ -1,5 +1,5 @@
 var records = [
-    { id: 1, username: process.env.USER_NAME, password: process.env.PASSWORD, displayName: 'Jack', emails: [ { value: 'jack@example.com' } ] }
+    { id: 1, username: process.env.USER_NAME, password: process.env.PASSWORD, displayName: 'PitMaster', emails: [ { value: 'pitmaster@rollinbonesbbq.com' } ] }
   , { id: 2, username: 'jill', password: 'birthday', displayName: 'Jill', emails: [ { value: 'jill@example.com' } ] }
 ];
 
