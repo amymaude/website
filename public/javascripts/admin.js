@@ -16,6 +16,16 @@ var saveAbout = function(){
   aboutRef.update({Title: title, Text: text});
 }
 
+var guid = function() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}
+
 var saveEvents = function(){
   console.log(($('.event-form-group')));
   $('.event-form-group').each(function(i){
@@ -37,19 +47,20 @@ var saveEvents = function(){
 
 }
 
-var saveFaqs = function(){
+var saveFaqs = function(e){
   $('.faq-form-group').each(function(i){
-    var id = $(this).find('#faqQuestion').val();
-    if(id){
-      id = id.replace(/\s+/g, '-').replace(/[?]/g, "").toLowerCase();
-
-      var faqRef = new Firebase('https://crackling-fire-6610.firebaseio.com/SiteText/FAQs/' + id);
-      var question = $(this).find('#faqQuestion').val();
-      var answer = $(this).find('#faqAnswer').val();
-      faqRef.update({question: question, answer: answer})
-    }else{
-      alert('Updated or added faq was invalid')
+    console.log('in save faqs!')
+    var id = ($(this)).attr('id');
+    console.log(id)
+    if(id == 'new'){
+      console.log('in generating uuid!')
+      id = guid();
+      console.log(id)
     }
+    var faqRef = new Firebase('https://crackling-fire-6610.firebaseio.com/SiteText/FAQs/' + id);
+    var question = $(this).find('#faqQuestion').val();
+    var answer = $(this).find('#faqAnswer').val();
+    faqRef.update({question: question, answer: answer})
   })
 
 }
