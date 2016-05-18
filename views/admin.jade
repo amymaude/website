@@ -22,14 +22,19 @@ html
         form(method="GET" action="/logout")
           input(class="btn btn-warning pull-right" type="submit" value="Sign Out")
       div(class="container-responsive")
-        div(class="row")
-          h2 About Section
-        div(class="row edit-about")
-          form(class='form-horizontal edit-about')
+        h1 Admin Page: Edit Site Content
         div(class="row" style="padding-top: 50px")
-          h2 Events Calendar/Dropdown
-          p <i> Events are stored by date. If you update an event's date, simply remember to delete the event associated with the original date<i>
+          h2 Calendar & Events Dropdown
+          p <i> Events are stored by date. If you update an event's date, simply remember to delete the event associated with the original date</i>
         div(class="row edit-events")
           div(class="edit-events-text")
             h2 Events
             form(class="edit-events")
+        div(class="row" style="padding-top: 50px")
+          h2 About Section
+        div(class="row edit-about")
+          form(class='form-horizontal edit-about')
+        div(class="row" style="padding-top: 50px")
+          h2 FAQs
+          div(class="edit-faqs-text")
+            form(class="edit-faqs")
