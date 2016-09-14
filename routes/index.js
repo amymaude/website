@@ -8,7 +8,6 @@ var flash = require('connect-flash');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(req.user)
   var token = process.env.INSTAGRAM_TOKEN
   var user = req.user || null
   res.render('index', { title: 'Rollin\' Bones', data: token, user: user});
@@ -32,10 +31,8 @@ router.post('/', function (req, res) {
     text: "from: " + req.body.name +", "+  req.body.email +"\nmessage: " + req.body.message
   };
 
-  console.log(mailOpts);
   smtpTrans.sendMail(mailOpts, function (error, response) {
     if (error) {
-      console.log(error)
       res.render('index', { msg: 'Error occured, message not sent.', err: true, page: 'index', data: token })
     }
     //Yay!! Email sent
@@ -58,7 +55,6 @@ router.post('/login', passport.authenticate('local-login', {
 );
 
 router.get('/admin', function (req, res){
-  console.log(req.user)
   if (!req.user) {
        return res.redirect('/');
      }
@@ -68,7 +64,6 @@ router.get('/admin', function (req, res){
 }),
 
 router.get('/logout', function(req, res){
-  console.log("in logout")
   req.logout();
   req.session.destroy();
   res.redirect('/'); //Can fire before session is destroyed?

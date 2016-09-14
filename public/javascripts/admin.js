@@ -27,10 +27,8 @@ var guid = function() {
 }
 
 var saveEvents = function(){
-  console.log(($('.event-form-group')));
   $('.event-form-group').each(function(i){
     var id = $(this).find('#eventDate').val();
-    console.log(id)
     if(id){
       var eventRef = new Firebase('https://crackling-fire-6610.firebaseio.com/SiteText/Events/' + id);
       var title = $(this).find('#eventTitle').val();
@@ -38,7 +36,6 @@ var saveEvents = function(){
       var date = $(this).find('#eventDate').val();
       var url = $(this).find('#eventMapsUrl').val();
       var checked = $(this).find('#inMainPage').prop('checked') ? true : false;
-      console.log(checked)
       eventRef.update({date: date, shortDesc: text, title: title, url: url, inMainPage: checked})
     }else{
       alert('Updated or added event date was invalid')
@@ -49,13 +46,9 @@ var saveEvents = function(){
 
 var saveFaqs = function(e){
   $('.faq-form-group').each(function(i){
-    console.log('in save faqs!')
     var id = ($(this)).attr('id');
-    console.log(id)
     if(id == 'new'){
-      console.log('in generating uuid!')
       id = guid();
-      console.log(id)
     }
     var faqRef = new Firebase('https://crackling-fire-6610.firebaseio.com/SiteText/FAQs/' + id);
     var question = $(this).find('#faqQuestion').val();

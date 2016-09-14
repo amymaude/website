@@ -5,11 +5,12 @@ var activeEmbeddedInstaIndex=0;
 var images;
 
 var getEmbedCode = function(images, index){
-  var url = "https://api.instagram.com/oembed/?url=" + images[index].link + "&OMIT_SCRIPT=true";
+  var link = (images[index].link).substring(0, images[index].link.length - 1);
+  var oembedUrl ="https://api.instagram.com/oembed?url=" + link + "&OMITSCRIPT=true";
   $.ajax({
     type: "GET",
     dataType: "jsonp",
-    url: url,
+    url: oembedUrl,
     success: function(data){
       activeImage = data.html;
       appendImage(activeImage)
@@ -26,7 +27,6 @@ var appendImage = function(image){
     $('.instagram-media').css({"max-width": "500px", "margin-right":"auto", "margin-left": "auto"});
 
     activeEmbeddedInstaIndex += 1
-    console.log("in append Image checking if this is the first item")
     $("#img0").addClass("active");
     getEmbedCode(images, activeEmbeddedInstaIndex)
   }else{
@@ -38,7 +38,6 @@ var appendImage = function(image){
 function getToken (){
 
     $.get("/", function(data){
-      console.log(data.locals)
   })
 };
 getToken();
@@ -56,6 +55,7 @@ $(document).ready(function(){
     url: "https://api.instagram.com/v1/users/2228535302/media/recent?access_token=" + token + "&count=10&callback=callbackFunction",
     success: function(data) {
       images=data.data
+
       getEmbedCode(images, activeEmbeddedInstaIndex);
     }
   })
@@ -67,8 +67,6 @@ $(document).ready(function(){
   $('#carousel-example-generic').on('slide.bs.carousel.right', function () {
     if(activeEmbeddedInstaIndex < 9){
       var activeImgId = "#img" + (activeEmbeddedInstaIndex+1);
-      console.log(activeImgId)
-      console.log($(activeImgId).length)
       if(!($(activeImgId).length > 0) && activeEmbeddedInstaIndex < 9){
         activeEmbeddedInstaIndex = activeEmbeddedInstaIndex+1;
         getEmbedCode(images, activeEmbeddedInstaIndex)
@@ -161,6 +159,5 @@ myFirebaseRef.on("value", function(snapshot) {
   for(prop in (siteText.Events)){
     eventArray.push(siteText.Events[prop])
   }
-  console.log(eventArray)
   getCalendar();
 });

@@ -42,7 +42,6 @@ passport.deserializeUser(function(id, cb) {
 passport.use('local-login', new LocalStrategy(
   function(username, password, done) {
     users.findByUsername(username, function(err, user) {
-      console.log(user)
       if (err) {
         return done(err);
       }
