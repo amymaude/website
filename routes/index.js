@@ -1,43 +1,45 @@
 var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
+var mg = require('nodemailer-mailgun-transport');
+
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
+var token = process.env.INSTAGRAM_TOKEN
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var token = process.env.INSTAGRAM_TOKEN
   var user = req.user || null
-  res.render('index', { title: 'Rollin\' Bones', data: token, user: user});
+  res.render('index', { title: 'Rollin\' Bones', data: token, user: user, msg: '' });
 });
 
 router.post('/', function (req, res) {
-  var token = process.env.INSTAGRAM_TOKEN
+
   var mailOpts, smtpTrans;
-  smtpTrans = nodemailer.createTransport('SMTP', {
-    service: 'gmail',
-    secure: true,
+  var auth = {
     auth: {
-      user: process.env.EMAIL,
-      pass: process.env.EMAIL_PWORD
+      api_key: process.env.MAILGUN_API_KEY,
+      domain: process.env.MAILGUN_DOMAIN
     }
-  });
+  };
+  smtpTrans = nodemailer.createTransport(mg(auth));
+
   mailOpts = {
     from: req.body.name +' <'+ req.body.email +'>',
-    to: "pitmaster@rollinbonesbbq.com",
+    to: process.env.EMAIL,
     subject: 'Website Contact Form',
     text: "from: " + req.body.name +", "+  req.body.email +"\nmessage: " + req.body.message
   };
 
   smtpTrans.sendMail(mailOpts, function (error, response) {
     if (error) {
-      res.render('index', { msg: 'Error occured, message not sent.', err: true, page: 'index', data: token })
+      res.send('index', { msg: 'Error occured, message not sent.', err: true, page: 'index', data: token })
     }
     //Yay!! Email sent
     else {
-        res.render('index', { msg: 'Message sent! Thank you.', err: false, page: 'index', data: token })
+      res.render('index', { msg: 'Message sent! Thank you.', err: false, page: 'index', data: token })
     }
   });
 });

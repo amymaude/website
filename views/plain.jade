@@ -2,6 +2,11 @@ block content
   script.
     var token = '#{locals.data}'
   script(src='/javascripts/application.js')
+  if( msg.length > 0 )
+    if(!!err)
+      div(class='alert alert-danger') #{msg}
+    else
+      div(class='alert alert-success') #{msg}
 
   div(id="carousel-example-generic" class="carousel slide" data-ride="carousel")
     div(class="carousel-inner" role="listbox")

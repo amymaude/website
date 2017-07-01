@@ -1,11 +1,6 @@
 
 extends layout
 block content
-  if(typeof msg !== 'undefined')
-    if(!!err)
-      div(class='alert alert-danger') #{msg}
-    else
-      div(class='alert alert-success') #{msg}
   div(class="container")
     div(class="row contact-form")
       h2 Contact Us!
